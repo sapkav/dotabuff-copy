@@ -1,0 +1,63 @@
+$base-hover-color: #3d4854;
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url('fonts/Ubuntu-Medium') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+* {
+  box-sizing: border-box;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.router-link-exact-active  {
+  background-color: #5a6979;
+  transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+@mixin btn-classic {
+  height: 32px;
+  padding: 3px 6px 0px 6px;
+  display: block;
+}
+
+.header-bg {
+  background-color: #2e3740;
+  width: 100%;
+  margin-top: 13px;
+  padding: 5px;
+}
+
+.bg-default {
+  background-color: #1c242d;
+  min-height: calc(100vh - 32px);
+  height: calc(100vh - 32px);
+  display: flex;
+  justify-content: center;
+}
+
+.content-default {
+  flex: 1 1 100%;
+  max-width: 1200px;
+  color: white;
+}
+
+.btn {
+  @include btn-classic;
+}
+
+.btn-plus {
+  @include btn-classic;
+  color: #ffbf00;
+}
+
+.btn:hover {
+  color: red;
+  background-color: $base-hover-color;
+}
+
+.btn-plus:hover {
+  background-color: $base-hover-color;
+}
