@@ -1,6 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  modules: ["@nuxtjs/tailwindcss"],
-  css: ['~/assets/scss/main.scss']
+  modules: ["@nuxtjs/tailwindcss", 'nuxt-primevue'],
+  css: ['~/assets/scss/main.scss'],
 })

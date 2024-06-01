@@ -7,20 +7,43 @@ $base-hover-color: #3d4854;
   font-style: normal;
 }
 
+@mixin btn-classic {
+  height: 32px;
+  padding: 3px 6px 0px 6px;
+  display: block;
+}
+
 * {
   box-sizing: border-box;
   font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
+.p-dropdown-trigger {
+  background-color: #1e2730;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+.p-dropdown-item {
+  font-size: 14px;
+  height: 24px;
+}
+
+.p-dropdown-label {
+  font-size: 14px;
+  color: white;
+  background-color: #1e2730;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  padding: 5px;
+
+}
+
 .router-link-exact-active  {
   background-color: #5a6979;
   transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
-}
-
-@mixin btn-classic {
-  height: 32px;
-  padding: 3px 6px 0px 6px;
-  display: block;
 }
 
 .header-bg {
