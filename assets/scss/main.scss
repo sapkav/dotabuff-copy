@@ -17,6 +17,7 @@ $base-grid-color: #25313e;
 * {
   box-sizing: border-box;
   font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  line-height: 22px;
 }
 
 .p-dropdown-trigger {
@@ -130,4 +131,22 @@ $base-grid-color: #25313e;
 .image-player {
   width: 64px;
   height: 64px;
+}
+
+.image-rank {
+  width: 64px;
+  height: 64px;
+}
+
+.image-rank-main {
+  width: 48px;
+  height: 48px;
+}
+
+.green-default {
+  color: #a9cf54;
+}
+
+.red-default {
+  color: #e40c1e;
 }
