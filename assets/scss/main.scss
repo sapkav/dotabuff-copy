@@ -1,4 +1,5 @@
 $base-hover-color: #3d4854;
+$base-grid-color: #25313e;
 
 @font-face {
   font-family: 'Open Sans';
@@ -19,7 +20,7 @@ $base-hover-color: #3d4854;
 }
 
 .p-dropdown-trigger {
-  background-color: #1e2730;
+  background-color: $base-grid-color;
   border-top-right-radius: 0px;
   border-bottom-right-radius: 0px;
 }
@@ -32,7 +33,7 @@ $base-hover-color: #3d4854;
 .p-dropdown-label {
   font-size: 14px;
   color: white;
-  background-color: #1e2730;
+  background-color: $base-grid-color;
   border-top-right-radius: 0px;
   border-bottom-right-radius: 0px;
   border-top-left-radius: 0px;
@@ -71,6 +72,16 @@ $base-hover-color: #3d4854;
   @include btn-classic;
 }
 
+.btn-person {
+  height: 32px;
+  padding: 3px;
+  display: block;
+}
+
+.btn-person:hover {
+  background-color: $base-hover-color;
+}
+
 .btn-plus {
   @include btn-classic;
   color: #ffbf00;
@@ -83,4 +94,40 @@ $base-hover-color: #3d4854;
 
 .btn-plus:hover {
   background-color: $base-hover-color;
+}
+
+.tabulator {
+  border: 1px solid $base-grid-color !important;
+  background-color: transparent !important;
+}
+
+.tabulator, .tabulator-header, .tabulator-col, .tabulator-header-contents {
+  border-right: 0px !important;
+  border-bottom: 0px !important;
+  background-color: transparent !important;
+}
+
+.tabulator-col-content {
+  color: white;
+  background-color: $base-grid-color;
+  border-right: 0px !important;
+}
+
+.tabulator-row-odd {
+  background-color: #2d3741 !important;
+  color: white;
+}
+
+.tabulator-row-even {
+  background-color: #28333d !important;
+  color: white;
+}
+
+.tabulator-cell {
+  border-right: 0px !important;
+}
+
+.image-player {
+  width: 64px;
+  height: 64px;
 }

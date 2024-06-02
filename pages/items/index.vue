@@ -14,59 +14,63 @@
         class="text-neutral-950 h-[30px] mt-2 w-[158px]"
         />
       <div>
-        TESST
-        <div ref="table" style="height: 535px;"></div>
+        <div ref="table" style="height: 100%; margin-top: 15px;"></div>
       </div>  
     </div>
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import Dropdown from 'primevue/dropdown';
 import { onMounted, ref, watch } from 'vue';
 import {TabulatorFull as Tabulator} from 'tabulator-tables';
+import gridFunctions from '@/composables/gridFunctions'
 
 export default {
-  name: 'Items',
+  name: 'items',
   components: {
     Dropdown
   },
   setup() {
     onMounted(() => {
-      console.log('Компонент примонтирован!');
       tabulator.value = new Tabulator(table.value, {
-        data: [],
+        data: [
+          {name: 'Desolator', time_use: '23232323', rate_use: '23232323', win_rate: '23232323', img: 'desolator.jpg'},
+          {name: 'Helm of the Dominator', time_use: '222', rate_use: '3333', win_rate: '444', img: 'helm-of-the-dominator.jpg'},
+          {name: 'Blink Dagger', time_use: '222', rate_use: '3333', win_rate: '444', img: 'blink-dagger.jpg'}
+        ],
         reactiveData:true,
         columns: [
           {
             title: 'Item',
-            field: 'admin_name',
+            field: 'name',
             width: '20%',
             resizable: false,
-            headerFilter: true,
+            headerFilter: false,
+            formatter: gridFunctions.imgItemCellRenderer,
           },
           {
             title: 'Times Used',
-            field: 'city',
+            field: 'time_use',
             width: '30%',
             resizable: false,
-            headerFilter: true,
+            headerFilter: false,
           },
           {
             title: 'Use Rate',
-            field: 'population',
+            field: 'rate_use',
             width: '30%',
-            headerFilter: true,
+            headerFilter: false,
             resizable: false,
           },
           {
             title: 'Win Rate',
-            field: 'population',
+            field: 'win_rate',
             width: '20%',
-            headerFilter: true,
+            headerFilter: false,
             resizable: false,
           }
-        ], //define table columns
+        ],
       });
     })
 

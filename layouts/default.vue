@@ -11,6 +11,9 @@
       <NuxtLink to="/forums" class="btn">Forums</NuxtLink>
       <NuxtLink to="/plus" class="btn-plus">Plus</NuxtLink>
     </div>
+    <div class="text-white">
+      <NuxtLink to="/players/248754619" class="btn-person">Пёсик</NuxtLink>
+    </div>
   </div>
 </template>
 
