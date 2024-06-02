@@ -48,7 +48,8 @@
         </div>
         <div>
           <section>
-            ACTIVITY
+            <Activity
+              />
           </section>
           <section>
             LIFETIME STATS
