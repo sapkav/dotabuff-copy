@@ -32,7 +32,7 @@ export default {
     Dropdown
   },
   setup() {
-    onMounted(() => {
+    onMounted(async () => {
       tabulator.value = new Tabulator(table.value, {
         data: [
           {name: 'Desolator', time_use: '23232323', rate_use: '23232323', win_rate: '23232323', img: 'desolator.jpg'},
