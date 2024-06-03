@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  modules: ["@nuxtjs/tailwindcss", 'nuxt-primevue', '@vesp/nuxt-fontawesome'],
+  modules: ["@nuxtjs/tailwindcss", 'nuxt-primevue', '@vesp/nuxt-fontawesome', '@pinia/nuxt'],
   css: ['~/assets/scss/main.scss'],
   fontawesome: {
     icons: {

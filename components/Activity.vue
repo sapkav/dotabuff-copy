@@ -26,7 +26,7 @@ export default {
     GChart,
   },
   setup(props) {
-    console.log(props.games);
+    //console.log(props.games);
     const chartOptions = {
       width: '100%',
       height: 140,

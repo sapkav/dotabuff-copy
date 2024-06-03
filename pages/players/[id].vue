@@ -39,11 +39,17 @@
           <section>
             ROLES AND LANES
           </section>
-          <section>
-            MOST PLAYED HEROES 
+          <section class="mt-3">
+            MOST PLAYED HEROES ALL TIME
+            <MostPlayed
+              :games="games"
+              />
           </section>
-          <section>
+          <section class="mt-3">
             LATEST MATCHES
+            <LatestMatches
+              :games="games.slice(0, 15)"
+              />
           </section>
         </div>
         <div>
@@ -69,17 +75,18 @@
 </template>
 
 <script>
+import { useGamesStore } from '~/store'
 import { onMounted, ref, watch } from 'vue';
 import axios from 'axios';
 
 export default {
   name: 'playerMatches',
   async setup() {
+    const { id } = useRoute().params;
     let winCount = 0,
     loseCount = 0,
     leaveCount = 0;
-    const games = (await axios('https://api.opendota.com/api/players/248754619/matches')).data.slice(0);
-    console.log(games);
+    const games = (await axios(`https://api.opendota.com/api/players/${id}/matches`)).data.slice(0);
     games.forEach(item => {
       if (item.player_slot < 128 && item.radiant_win || item.player_slot >= 128 && !item.radiant_win) {
         winCount++;
@@ -94,38 +101,6 @@ export default {
       games
     }
   },
-  // setup() {
-  //   onMounted(async () => {
-  //     const count = ref(0)
-  //     const winCount = ref(1),
-  //     loseCount = ref(1);
-  //     //const games = (await axios('https://api.opendota.com/api/players/248754619/matches')).data.slice(0);
-  //     // await games.forEach(item => {
-  //     //   if (item.player_slot < 128 && item.radiant_win || item.player_slot >= 128 && !item.radiant_win) {
-  //     //     winCount.value++;
-  //     //   } else {
-  //     //     loseCount.value++;
-  //     //   }
-  //     // })
-  //     console.log(winCount.value, loseCount)
-  //     return {
-  //       //games,
-  //       winCount,
-  //       loseCount,
-  //       count
-  //     }
-  //     // console.log(games);
-  //     // this.max_duration = 0;
-  //     // this.games.forEach(item => {
-  //     //   item.match_result = this.winCheck(item.player_slot, item.radiant_win);
-  //     //   item.time_ago = this.timeCalc(item.start_time);
-  //     //   item.sum = item.kills + item.deaths + item.assists;
-  //     //   if (item.duration > this.max_duration) {
-  //     //     this.max_duration = item.duration;
-  //     //   }
-  //     // })
-  //   })
-  // },
 }
 </script>
 
