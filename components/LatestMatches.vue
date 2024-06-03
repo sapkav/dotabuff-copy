@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div ref="table" style="height: 100%; margin-top: 8px; width: auto"></div>
+    <div ref="table" style="height: 100%; margin: 3px 0 20px 0; width: auto"></div>
   </div>
 </template>
 
@@ -24,10 +24,13 @@ export default {
     const table = ref(null);
     const tabulator = ref(null);
     const data = props.games.slice(0);
+    data[0].max_duration = data[0].duration;
     data.forEach(item => {
       item.name = objHero[item.hero_id].localized_name;
       item.img = objHero[item.hero_id].name + '.jpg';
+      if (item.duration > data[0].max_duration) data[0].max_duration = item.duration;
     })
+    console.log(data);
 
     onMounted(async () => {
       tabulator.value = new Tabulator(table.value, {
@@ -46,30 +49,30 @@ export default {
             title: 'Result',
             field: 'count',
             resizable: false,
-            width: '15%',
+            width: '24%',
             formatter: gridFunctions.matchesCellRenderer,
           },
           {
             title: 'Type',
             field: 'win_rate',
             headerFilter: false,
-            width: '15%',
+            width: '12%',
             resizable: false,
             formatter: gridFunctions.winrateCellRenderer,
           },
           {
             title: 'Duration',
-            field: 'kda',
+            field: 'duration',
             headerFilter: false,
-            width: '15%',
+            width: '12%',
             resizable: false,
-            formatter: gridFunctions.kdaCellRenderer,
+            formatter: gridFunctions.durationRenderer,
           },
           {
             title: 'KDA',
             field: 'role',
             headerFilter: false,
-            width: '15%',
+            width: '12%',
             resizable: false,
             formatter: gridFunctions.matchKdaCellRenderer,
           },
