@@ -1,3 +1,5 @@
+import { objHero } from '@/composables/dotaObjects';
+
 export default {
   imgItemCellRenderer: (cell) => {
     const src = `${getUrl()}/_nuxt/assets/img/items/${cell._cell.row.data.img}`;
@@ -58,8 +60,35 @@ export default {
         <div style="background-color: white; width: ${(+cell._cell.value/+maxDuration) * 100}%; height: 4px; margin-top: 3px"></div>
       </div>
     </div>`
-  }
+  },
+  fiveHeroCellRenderer: (cell) => {
+    let final = '<div class="pt-1 flex">'
+    for (let i = 0; i < 5; i++) {
+      const src = `${getUrl()}/_nuxt/assets/img/heroes/${objHero[cell._cell.value[i]].name}.jpg`;
+      final += `<img src="${src}" title="${objHero[cell._cell.value[i]].localized_name}" width="42" height="24" style="margin-right: 5px">`
+    }
+    final += '</div>'
+    return final;
+  },
+  matchIdRenderer: (cell) => {
+    return `<div class="text-xs leading-[16px]">
+      <div class="green-default text-sm leading-[16px]">${cell._cell.value}</div>
+      <div class="leading-[16px]">${timeAgoCalc(cell._cell.row.data.start_time)}</div>
+    </div>`
+  },
+  cellResultRenderer: (cell) => {
+    let fin = '<div class="text-xs leading-[16px]">';
+    if (cell._cell.value) {
+      fin += `<div class="green-default text-sm leading-[16px]">Radiant Victory</div>`;
+    } else {
+      fin += `<div class="green-default text-sm leading-[16px]">Dire Victory</div>`;
+    }
+    fin += `<div class="leading-[16px]">${23}</div>
+    </div>`;
+    return fin;
+  },
 }
+
 
 function getUrl() {
   return location.origin;
@@ -71,9 +100,8 @@ function calcTime(val) {
 
 function timeAgoCalc(time) {
   const timeDiff = +String(new Date().getTime()).slice(0, 10) - time;
-  console.log(timeDiff, time)
   if (timeDiff < 3600) {
-    return `${timeDiff & 3600} hinutes ago`;
+    return `${timeDiff & 3600} minutes ago`;
   } else if (timeDiff < 86400) {
     return `${Math.floor(timeDiff / 3600)} hours ago`;
   } else {
