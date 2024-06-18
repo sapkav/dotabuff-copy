@@ -10,8 +10,8 @@
       <!-- //<Button label="Check" icon="pi pi-check" /> -->
       <div>ALL HEROES, ANY MODE, ANY LOBBY, ANY SKILL, ANY REGION</div>
       <Dropdown 
-        :options="timeArr"
-        v-model="selectedTime"
+        :options="heroesArr"
+        v-model="selectedHero"
         class="text-neutral-950 h-[30px] mt-2 w-[158px] mr-5"
         />
       <Dropdown 
@@ -31,11 +31,12 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import axios from 'axios';
 import { ref, reactive, onMounted } from 'vue';
 import { TabulatorFull as Tabulator } from 'tabulator-tables';
 import { matchAllPickColumns } from '@/composables/gridColumns';
+import { heroesArr } from '@/composables/dotaObjects';
 
 export default {
   name: 'heroes',
@@ -55,6 +56,7 @@ export default {
     })
     const table = ref(null);
     const tabulator = ref(null);
+    const selectedHero = ref('All Heroes');
     const selectedTime = ref('now');
     const timeArr = reactive(['232323233', 'now']);
 
@@ -62,7 +64,8 @@ export default {
       selectedTime,
       timeArr,
       table,
-      tabulator
+      tabulator,
+      selectedHero
     }
   }
 }
